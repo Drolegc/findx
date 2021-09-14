@@ -24,7 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   findx:
-    path: C:\Users\pc\Desktop\getxsample\findx
+    path: ../
 
 
 

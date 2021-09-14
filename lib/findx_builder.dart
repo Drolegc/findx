@@ -29,6 +29,7 @@ class _FindXBuilderState<T extends FindXController> extends State<FindXBuilder<T
   T? _controller;
   T get controller => _controller!;
 
+  FindXStore? _findXStore;
   late VoidParameterCallback _listener;
 
   @override
@@ -49,6 +50,12 @@ class _FindXBuilderState<T extends FindXController> extends State<FindXBuilder<T
   }
 
   @override
+  void didChangeDependencies() {
+    _findXStore = FindXStore.of(context)!;
+    super.didChangeDependencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
     if(_controller == null){
 
@@ -63,7 +70,6 @@ class _FindXBuilderState<T extends FindXController> extends State<FindXBuilder<T
         controller.addListener(_listener);
     }
 
-
     return widget.builder(controller);
   }
 
@@ -71,6 +77,7 @@ class _FindXBuilderState<T extends FindXController> extends State<FindXBuilder<T
   void dispose() {
     super.dispose();
     controller.removeListener(_listener);
+    _findXStore!.store.remove<T>(id: controller.id);
   }
 
 }

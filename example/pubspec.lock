@@ -60,10 +60,10 @@ packages:
   findx:
     dependency: "direct main"
     description:
-      path: "C:\\Users\\pc\\Desktop\\getxsample\\findx"
-      relative: false
+      path: ".."
+      relative: true
     source: path
-    version: "0.0.1"
+    version: "0.0.2"
   flutter:
     dependency: "direct main"
     description: flutter

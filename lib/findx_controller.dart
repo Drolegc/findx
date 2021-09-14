@@ -1,12 +1,11 @@
 import 'package:findx/findx_change_notifier.dart';
-import 'package:flutter/widgets.dart';
 
 abstract class FindXController extends FindXChangeNotifier {
 
-  final BuildContext? needContext;
   final String? id;
+  final bool permanent;
 
-  FindXController({this.needContext,this.id});
+  FindXController({this.id,this.permanent = false});
 
   void update({List<String>? ids}){
     notifyListeners(ids);
