@@ -131,13 +131,38 @@ class LastFindXBuilder extends StatelessWidget {
     return FindXBuilder<Controller>(
         //put: Controller(),
         builder: (_) {
-          return TextButton(
-              onPressed: () {
-                _.changeRandomData();
-              },
-              child: Text("Last builder" + _.sampleData));
+          return Column(
+            children: [
+              TextButton(
+                  onPressed: () {
+                    _.changeRandomData();
+                  },
+                  child: Text("Last builder" + _.sampleData)),
+              CommFindXBuilder()
+            ],
+          );
         });
   }
 }
 
+
+class CommFindXBuilder extends StatelessWidget {
+
+
+  @override
+  Widget build(BuildContext context) {
+
+    return FindXBuilder<CommunicationWithOthers>(
+        put: CommunicationWithOthers(),
+        allowCommunicationWithOthers: true,
+        builder: (_) {
+      return TextButton(
+          onPressed: () {
+            _.testCommunication();
+          },
+          child: Text("Communicate with other controller"));
+    });
+  }
+
+}
 

@@ -37,11 +37,15 @@ class _FindXStore {
     return _controllers[name] as T;
   }
 
-  void put<T extends FindXController>(T controller, {String? id}) {
+  void put<T extends FindXController>(T controller, {String? id,bool allowComunicationWithOthers = false}) {
     var name = (id == null)
         ? controller.runtimeType.toString()
         : controller.runtimeType.toString() + id;
-    if (_controllers[name] == null) _controllers[name] = controller;
+
+    if (_controllers[name] == null) {
+      controller.allowComunicationWithOthers(_controllers);
+      _controllers[name] = controller;
+    }
   }
 
   void remove<T extends FindXController>({String? id}) {

@@ -40,3 +40,11 @@ class GlobalController extends FindXController {
         .join();
   }
 }
+
+class CommunicationWithOthers extends FindXController {
+
+  void testCommunication(){
+    var globalControllerComm = findOtherController<GlobalController>();
+    print(globalControllerComm);
+  }
+}
